@@ -1,5 +1,6 @@
 import { h, render } from 'preact';
 import { defaultConfig } from './models';
+import { App } from './App';
 
 type MethodNames = 'init';
 const DEFAULT_NAME = '_hw';
@@ -47,7 +48,7 @@ const app = (window: Window) => {
                 const wrappingElement = loadedObject.element ?? window.document.body;
                 const targetElement = wrappingElement.appendChild(window.document.createElement('div'));
                 targetElement.setAttribute('id', `widget-${instanceName}`);
-                render(h('h1', null, `Widget! ${instanceName}`), targetElement);
+                render(h(App, {...loadedObject}), targetElement);
 
                 // store indication that widget instance was initialized
                 window[`loaded-${instanceName}`] = true;
