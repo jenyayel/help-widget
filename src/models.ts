@@ -24,9 +24,24 @@ export type Configurations = InfraConfigurations & AppConfigurations;
 
 export const defaultConfig: Configurations = {
     debug: false,
-    serviceBaseUrl: '',
+    serviceBaseUrl: 'https://ts-wisget-backend.glitch.me',
     minimized: false,
     disableDarkMode: false,
     text: {},
     styles: {}
 };
+
+export interface FaqModel {
+    question: string;
+    answer: string;
+}
+
+export interface FormModel {
+    email: string;
+    message: string;
+}
+
+export interface WidgetApi {
+    getFaq: () => Promise<FaqModel[]>;
+    sendForm: (model: FormModel) => Promise<void>;
+}
