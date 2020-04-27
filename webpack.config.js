@@ -63,7 +63,8 @@ module.exports = (env) => {
                                         },
                                         // makes usage of @babel/polyfill because of IE11
                                         useBuiltIns: 'usage'
-                                    }]
+                                    }],
+                                    ["@babel/typescript"]
                                 ]
                             }
                         }
@@ -71,7 +72,7 @@ module.exports = (env) => {
                 }]
         },
         resolve: {
-            extensions: ['*', '.js']
+            extensions: ['*', '.js', '.ts', '.tsx']
         }
     }];
 };
