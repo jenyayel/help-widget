@@ -1,0 +1,24 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "eofline": false,
+        "no-console": false,
+        "quotemark": [true, "single", "avoid-escape"],
+        "semicolon": [true, "always", "ignore-bound-class-methods"],
+        "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"],
+        "no-trailing-whitespace": true,
+        "trailing-comma": false,
+        "no-string-literal": false,
+        "interface-name": [true, "never-prefix"],
+        "ordered-imports": false,
+        "object-literal-sort-keys": false
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": ["export/**/*"]
+    }
+}
