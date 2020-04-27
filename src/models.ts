@@ -2,6 +2,11 @@ interface InfraConfigurations {
     element?: HTMLElement;
 }
 
+/**
+ * A model representing all possible configurations
+ * that can be done from embedded script. Those settings
+ * are passed around in application via Context.
+ */
 export interface AppConfigurations {
     debug: boolean;
     serviceBaseUrl: string;
@@ -22,6 +27,10 @@ export interface AppConfigurations {
 
 export type Configurations = InfraConfigurations & AppConfigurations;
 
+/**
+ * Default configurations that are overridden by
+ * parameters in embedded script.
+ */
 export const defaultConfig: Configurations = {
     debug: false,
     serviceBaseUrl: 'https://ts-wisget-backend.glitch.me',
@@ -42,6 +51,6 @@ export interface FormModel {
 }
 
 export interface WidgetApi {
-    getFaq: () => Promise<FaqModel[]>;
-    sendForm: (model: FormModel) => Promise<void>;
+    getFaq: () => Promise<FaqModel[]> | FaqModel[];
+    sendForm: (model: FormModel) => Promise<void> | void;
 }

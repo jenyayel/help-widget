@@ -3,7 +3,14 @@ import { FaqModel, FormModel, WidgetApi } from '../models';
 
 interface ApiClientOptions {
     baseUrl: string;
+    /**
+     * An optional factory, that should supply bearer token which will
+     * be attached to authorization header when making requests.
+     */
     authTokenFactory?: () => Promise<string | undefined>;
+    /**
+     * Write more logs into console.
+     */
     debug?: boolean;
 }
 
@@ -45,6 +52,10 @@ export class ApiClient implements WidgetApi {
     public sendForm = async (requestData: FormModel) =>
         await this.callApi<void>({ url: `/contact`, method: 'POST', requestData });
 
+    /**
+     * Helper with saint defaults to perform an HTTP call.
+     * @param request A request to perform.
+     */
     private callApi<TResponse = any, TRequest = any>(request: ApiRequest<TRequest>): Promise<TResponse> {
         return new Promise((resolve, reject) => {
             this.client
