@@ -64,7 +64,18 @@ module.exports = (env) => {
                                         // makes usage of @babel/polyfill because of IE11
                                         useBuiltIns: 'usage'
                                     }],
-                                    ["@babel/typescript"]
+                                    ["@babel/typescript", { jsxPragma: "h" }]
+                                ],
+                                'plugins': [
+                                    // syntax sugar found in React components
+                                    '@babel/proposal-class-properties',
+                                    '@babel/proposal-object-rest-spread',
+                                    // transpile JSX/TSX to JS
+                                    ['@babel/plugin-transform-react-jsx', {
+                                        // we use Preact, which has `Preact.h` instead of `React.createElement`
+                                        pragma: 'h',
+                                        pragmaFrag: 'Fragment'
+                                    }]
                                 ]
                             }
                         }

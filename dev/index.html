@@ -9,10 +9,10 @@
 <body>
     <h1>Help Widget Demo</h1>
     <h2>The shown widget is for demonstration purpose only</h2>
-    <p>
-        The following snippet is embedded on this page and allows to render a widget shown on the right bottom corder.
-    </p>
 
+    <p>
+        The following snippet is embedded on this page and allows to render a widget shown on the right bottom corner:
+    </p>
     <code>
         <pre>
 &lt;script&gt;
@@ -25,13 +25,33 @@
 &lt;/script&gt;
         </pre>
     </code>
+
     <p>
-        Orci purus ante excepteur nunc nascetur rhoncus taciti ut. Ornare vitae sed. Amet suspendisse
-        integer rutrum
-        aliquet
-        venenatis. Nec sed nullam mauris magna vel pretium non tristique. Porta justo ac dictumst aliquip blandit.
-        Libero
-        nec eu dolor eget volutpat. Magna nulla neque. Fames tempus lorem duis orci ipsum.</p>
+        There is also an additional snippet, that demonstrates ability to embed multiple widgets
+        with different configurations and  keep their instances separate:
+    </p>
+    <code>
+        <pre>
+&lt;script&gt;
+    (function (w, d, s, o, f, js, fjs) {
+        w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+        js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+    }(window, document, 'script', 'aw1', './widget.js'));
+    aw1('init', { minimized: true, disableDarkMode: true });
+&lt;/script&gt;
+&lt;style&gt;
+    #widget-aw1 .main-root-3PoTs {
+        right: auto;
+        left: 10px
+    }
+&lt;/style&gt;
+        </pre>
+    </code>
+
+
+    <p>
+        Below is a text that doesn't make sense at all.</p>
     <p>Orci purus ante excepteur nunc nascetur rhoncus taciti ut. Ornare vitae sed. Amet suspendisse
         integer rutrum
         aliquet
@@ -84,6 +104,20 @@
         }(window, document, 'script', '_hw', './widget.js'));
         _hw('init', { debug: true });
     </script>
+    <script>
+        (function (w, d, s, o, f, js, fjs) {
+            w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+            js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+            js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+        }(window, document, 'script', 'aw1', './widget.js'));
+        aw1('init', { minimized: true, disableDarkMode: true });
+    </script>
+    <style>
+        #widget-aw1 .main-root-3PoTs {
+            right: auto;
+            left: 10px
+        }
+    </style>
 </body>
 
 </html>

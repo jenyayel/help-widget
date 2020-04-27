@@ -1,3 +1,4 @@
+import { h, render } from 'preact';
 import { defaultConfig } from './models';
 
 type MethodNames = 'init';
@@ -46,9 +47,7 @@ const app = (window: Window) => {
                 const wrappingElement = loadedObject.element ?? window.document.body;
                 const targetElement = wrappingElement.appendChild(window.document.createElement('div'));
                 targetElement.setAttribute('id', `widget-${instanceName}`);
-                // TODO: at this stage the element `targetElement` is ready to be "rendered into"
-                // later on, we'll have react/preact to render itself into it, but this can be as far as
-                // vanilla-js
+                render(h('h1', null, `Widget! ${instanceName}`), targetElement);
 
                 // store indication that widget instance was initialized
                 window[`loaded-${instanceName}`] = true;
