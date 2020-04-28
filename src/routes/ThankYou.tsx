@@ -1,3 +1,19 @@
 import { h } from 'preact';
+import { useContext } from 'preact/hooks';
+import { ConfigContext } from '../context';
+import { RouteLink } from '../layout/Router';
 
-export default () => (<h1>Thank You</h1>);
+const ThankYou = () => {
+    const config = useContext(ConfigContext);
+
+    return (
+        <div>
+            <h2>{config.text.thankYouTitle ?? 'Thank you'}</h2>
+            <p>{config.text.thankYouBody ?? 'Your message was sent to us. We\'ll contact you shortly.'}</p>
+            <p>
+                Meantime you can look at <RouteLink href='/faq'>FAQ area</RouteLink> for most common questions.</p>
+        </div>
+    );
+};
+
+export default ThankYou;
