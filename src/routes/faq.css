@@ -1,0 +1,11 @@
+.root {
+    list-style: none;
+    padding: 0;
+    margin: 0
+  }
+  .root li span {
+    display: none;
+  }
+  .root li.visible span {
+    display: block;
+  }

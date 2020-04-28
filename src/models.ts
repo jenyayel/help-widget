@@ -51,6 +51,6 @@ export interface FormModel {
 }
 
 export interface WidgetApi {
-    getFaq: () => Promise<FaqModel[]> | FaqModel[];
-    sendForm: (model: FormModel) => Promise<void> | void;
+    getFaq: () => Promise<FaqModel[]>;
+    sendForm: (model: FormModel) => Promise<void>;
 }
