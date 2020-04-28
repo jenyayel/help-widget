@@ -1,0 +1,9 @@
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.error {
+  color: var(--color-error);
+  margin: 12px 0;
+}

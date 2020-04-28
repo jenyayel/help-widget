@@ -1,0 +1,13 @@
+.root {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.root.error input, .root.error textarea {
+  border: 1px solid var(--color-error);
+}
+
+.root.error>span {
+  color: var(--color-error);
+  font-size: 13px;
+}
