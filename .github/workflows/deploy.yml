@@ -1,8 +1,7 @@
 name: Deploy
 on:
   release:
-    types:
-      - published
+    types: [published]
 
 jobs:
   deploy:
