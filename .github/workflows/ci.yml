@@ -8,13 +8,13 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build-ci:
 
     runs-on: ubuntu-18.04
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [10.x]
 
     steps:
     - uses: actions/checkout@v2
