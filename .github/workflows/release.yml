@@ -26,7 +26,7 @@ jobs:
         tag_name: ${{ github.ref }}
         release_name: Release ${{ github.ref }}
         draft: true
-        prerelease: false
+        prerelease: true
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
       env:
@@ -44,5 +44,6 @@ jobs:
         repository: ${{ github.repository }}
         release: ${{ steps.create_release.outputs.id }}
         draft: false
+        prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
