@@ -8,7 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: wyozi/download-gh-release-asset@master
+    - uses: wyozi/download-gh-release-asset@900f478ec041a124be5d0baf555c9b9f0e04fca3
       with:
         args: widget.zip
       env:
@@ -16,7 +16,7 @@ jobs:
     - run:  unzip widget -C widget.js -d help-widget
 
     - name: S3 Upload
-      uses: jakejarvis/s3-sync-action@2fb81a9e9fea11e078587911c27754e42e6a6e88
+      uses: jakejarvis/s3-sync-action@7ed8b112447abb09f1da74f3466e4194fc7a6311
       env:
         SOURCE_DIR: './help-widget'
         DEST_DIR: 'help-widget'
@@ -26,7 +26,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     - name: Invalidate CDN
-      uses: chetan/invalidate-cloudfront-action@master
+      uses: chetan/invalidate-cloudfront-action@2d2d3f464dcae0bea80ceff79e89960bbac6a754
       env:
         DISTRIBUTION: ${{ secrets.AWS_CF_DISTRIBUTION }}
         PATHS: '/help-widget/**'
