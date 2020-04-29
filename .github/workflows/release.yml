@@ -43,6 +43,6 @@ jobs:
         route: PATCH /repos/:repository/releases/:release
         repository: ${{ github.repository }}
         release: ${{ steps.create_release.outputs.id }}
-        input: '{"draft":false}'
+        draft: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
