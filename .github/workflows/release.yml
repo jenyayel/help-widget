@@ -25,7 +25,7 @@ jobs:
       with:
         tag_name: ${{ github.ref }}
         release_name: Release ${{ github.ref }}
-        draft: false
+        draft: true
         prerelease: false
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
@@ -36,3 +36,13 @@ jobs:
         asset_path: ./widget.zip
         asset_name: widget.zip
         asset_content_type: application/zip
+
+    - uses: octokit/request-action@v2.x
+      name: Publish Release
+      with:
+        route: PATCH /repos/:repository/releases/:release
+        repository: ${{ github.repository }}
+        release: ${{ steps.create_release.outputs.id }}
+        input: '{"draft":false}'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
