@@ -29,7 +29,7 @@ const Faq = () => {
                             {
                                 questions.map((q, i) => (
                                     <li key={i} className={clsx({ [style.visible]: i === visible })}>
-                                        <a href='#' onClick={() => setVisible(i)}>{q.question}</a>
+                                        <a href='javascript:;' onClick={() => setVisible(i)}>{q.question}</a>
                                         <span>{q.answer}</span>
                                     </li>))
                             }
