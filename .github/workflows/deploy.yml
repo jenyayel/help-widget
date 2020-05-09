@@ -29,7 +29,7 @@ jobs:
         uses: chetan/invalidate-cloudfront-action@2d2d3f464dcae0bea80ceff79e89960bbac6a754
         env:
           DISTRIBUTION: ${{ secrets.AWS_CF_DISTRIBUTION }}
-          PATHS: "/help-widget/**"
+          PATHS: "/help-widget/widget.js"
           AWS_REGION: "us-east-1"
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
