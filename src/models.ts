@@ -33,7 +33,7 @@ export type Configurations = InfraConfigurations & AppConfigurations;
  */
 export const defaultConfig: Configurations = {
     debug: false,
-    serviceBaseUrl: 'https://ts-wisget-backend.glitch.me',
+    serviceBaseUrl: 'https://help-widget-backend.glitch.me',
     minimized: false,
     disableDarkMode: false,
     text: {},
