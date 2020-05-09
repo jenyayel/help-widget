@@ -5,21 +5,29 @@ import style from './faq.css';
 import { FaqModel } from '../models';
 import clsx from 'clsx';
 import { RouteLink } from '../layout/Router';
+import { useTimeout } from '../hooks';
 
 const Faq = () => {
     const service = useContext(ServiceContext);
     const [questions, setQuestions] = useState<FaqModel[] | undefined>(undefined);
     const [visible, setVisible] = useState(0);
+    const [statusText, setStatusText] = useState('');
+
+    useTimeout(() => !questions && setStatusText('Loading...'), 500);
+    useTimeout(() => !questions && setStatusText('Still loading...'), 5000);
+    useTimeout(() => !questions && setStatusText('Backend still didn\'t return results...'), 10000);
 
     useEffect(() => {
-        service?.getFaq().then(setQuestions);
+        service?.getFaq()
+            .then(setQuestions)
+            .catch(() => setStatusText('Failed to load, try again later.'));
     }, [service]);
 
     return (
         <div>
             {
                 !questions
-                    ? 'Loading...'
+                    ? statusText
                     : <Fragment>
                         <p>
                             Here is a list of frequently asked questions.

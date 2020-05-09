@@ -7,3 +7,10 @@ export const useIsMounted = () => {
     });
     return isMounted;
 };
+
+export const useTimeout = (callback: () => void, delay: number) => {
+    const savedCallback = useRef(callback);
+    useEffect(() => {
+        setTimeout(savedCallback.current, delay);
+    }, [delay]);
+};
