@@ -13,7 +13,7 @@ export const testConfig = (): Configurations => ({
 export const install = (w: Window, name: string, config?: Configurations) => {
     const d = w.document;
     // tslint:disable-next-line: only-arrow-functions
-    w[name] = w[name] || function () { (w[name].q = w[name].q || []).push(arguments); };
+    w[name] = w[name] || function() { (w[name].q = w[name].q || []).push(arguments); };
     const js = d.createElement('script');
     js.id = name;
     w[name]('init', config);
