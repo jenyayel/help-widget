@@ -17,12 +17,12 @@ interface LoaderObject {
     q: Array<[MethodNames, {}]>;
 }
 
-const app = (window: Window) => {
+const app = (win: Window) => {
 
     // get a hold of script tag instance, which has an
-    // atribute `id` with unique identifier of the widget instance
-    const instanceName = document.currentScript?.attributes.getNamedItem('id')?.value ?? DEFAULT_NAME;
-    const loaderObject: LoaderObject = window[instanceName];
+    // attribute `id` with unique identifier of the widget instance
+    const instanceName = win.document.currentScript?.attributes.getNamedItem('id')?.value ?? DEFAULT_NAME;
+    const loaderObject: LoaderObject = win[instanceName];
     if (!loaderObject || !loaderObject.q) {
         throw new Error(`Widget didn't find LoaderObject for instance [${instanceName}]. ` +
             `The loading script was either modified, no call to 'init' method was done ` +
@@ -30,7 +30,7 @@ const app = (window: Window) => {
     }
 
     // check that the widget is not loaded twice under the same name
-    if (window[`loaded-${instanceName}`]) {
+    if (win[`loaded-${instanceName}`]) {
         throw new Error(`Widget with name [${instanceName}] was already loaded. `
             + `This means you have multiple instances with same identifier (e.g. '${DEFAULT_NAME}')`);
     }
@@ -52,13 +52,13 @@ const app = (window: Window) => {
                 }
 
                 // the actual rendering of the widget
-                const wrappingElement = loadedObject.element ?? window.document.body;
-                const targetElement = wrappingElement.appendChild(window.document.createElement('div'));
+                const wrappingElement = loadedObject.element ?? win.document.body;
+                const targetElement = wrappingElement.appendChild(win.document.createElement('div'));
                 targetElement.setAttribute('id', `widget-${instanceName}`);
                 render(h(App, { ...loadedObject }), targetElement);
 
                 // store indication that widget instance was initialized
-                window[`loaded-${instanceName}`] = true;
+                win[`loaded-${instanceName}`] = true;
                 break;
             // TODO: here you can handle additional async interactions
             // with the widget from page (e.q. `_hw('refreshStats')`)
@@ -69,7 +69,7 @@ const app = (window: Window) => {
 
     // once finished processing all async calls, we going
     // to convert LoaderObject into sync calls to methods
-    window[instanceName] = (method: MethodNames, ...args: any[]) => {
+    win[instanceName] = (method: MethodNames, ...args: any[]) => {
         switch (method) {
             // TODO: here you can handle additional sync interactions
             // with the widget from page
