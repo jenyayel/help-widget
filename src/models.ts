@@ -27,19 +27,6 @@ export interface AppConfigurations {
 
 export type Configurations = InfraConfigurations & AppConfigurations;
 
-/**
- * Default configurations that are overridden by
- * parameters in embedded script.
- */
-export const defaultConfig: Configurations = {
-    debug: false,
-    serviceBaseUrl: 'https://help-widget-backend.glitch.me',
-    minimized: false,
-    disableDarkMode: false,
-    text: {},
-    styles: {}
-};
-
 export interface FaqModel {
     question: string;
     answer: string;

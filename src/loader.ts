@@ -1,7 +1,7 @@
 import { Configurations } from './models';
 
 type MethodNames = 'init';
-const DEFAULT_NAME = '_hw';
+export const DEFAULT_NAME = '_hw';
 
 /**
  * Represents a model that is created in embedded script
