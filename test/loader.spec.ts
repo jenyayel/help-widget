@@ -43,8 +43,8 @@ describe('loader', () => {
         install(expectedName1, expectedConfig1);
         install(expectedName2, expectedConfig2);
 
-        const renderMock1 = jest.fn((_: HTMLElement, __: Configurations) => { });
-        const renderMock2 = jest.fn((_: HTMLElement, __: Configurations) => { });
+        const renderMock1 = jest.fn((_: HTMLElement, __: Configurations) => undefined);
+        const renderMock2 = jest.fn((_: HTMLElement, __: Configurations) => undefined);
 
         // act
         loader(window, testConfig(), currentScript(expectedName1), renderMock1);
