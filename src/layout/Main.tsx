@@ -3,7 +3,7 @@ import style from './main.css';
 import ContactForm from '../routes/ContactForm';
 import ThankYou from '../routes/ThankYou';
 import { useContext, useState } from 'preact/hooks';
-import { ConfigContext } from '../context';
+import { ConfigContext } from '../AppContext';
 import clsx from 'clsx';
 import TitleBar from '../components/TitleBar';
 import Faq from '../routes/Faq';

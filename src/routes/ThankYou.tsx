@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { useContext } from 'preact/hooks';
-import { ConfigContext } from '../context';
+import { ConfigContext } from '../AppContext';
 import { RouteLink } from '../layout/Router';
 
 const ThankYou = () => {

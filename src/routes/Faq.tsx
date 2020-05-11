@@ -1,6 +1,6 @@
 import { h, Fragment } from 'preact';
 import { useContext, useState, useEffect } from 'preact/hooks';
-import { ServiceContext } from '../context';
+import { ServiceContext } from '../AppContext';
 import style from './faq.css';
 import { FaqModel } from '../models';
 import clsx from 'clsx';
@@ -13,14 +13,16 @@ const Faq = () => {
     const [visible, setVisible] = useState(0);
     const [statusText, setStatusText] = useState('');
 
-    useTimeout(() => !questions && setStatusText('Loading...'), 500);
-    useTimeout(() => !questions && setStatusText('Still loading...'), 5000);
-    useTimeout(() => !questions && setStatusText('Backend still didn\'t return results...'), 10000);
+    const loaders = [
+        useTimeout(() => !questions && setStatusText('Loading...'), 500),
+        useTimeout(() => !questions && setStatusText('Still loading...'), 5000),
+        useTimeout(() => !questions && setStatusText('Backend still didn\'t return results...'), 10000)];
 
     useEffect(() => {
         service?.getFaq()
             .then(setQuestions)
-            .catch(() => setStatusText('Failed to load, try again later.'));
+            .catch(() => setStatusText('Failed to load, try again later.'))
+            .then(() => loaders.forEach((c) => c()));
     }, [service]);
 
     return (

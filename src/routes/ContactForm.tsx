@@ -1,7 +1,7 @@
 import { h, Fragment } from 'preact';
 import { useContext, useState, useMemo, useEffect } from 'preact/hooks';
 import style from './contactForm.css';
-import { ConfigContext, ServiceContext } from '../context';
+import { ConfigContext, ServiceContext } from '../AppContext';
 import Field from '../components/Field';
 import { useIsMounted } from '../hooks';
 import { RouteLink, RouterContext } from '../layout/Router';

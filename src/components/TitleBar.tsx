@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import style from './titlebar.css';
 import { useContext, useState, useEffect } from 'preact/hooks';
-import { ConfigContext } from '../context';
+import { ConfigContext } from '../AppContext';
 
 interface OwnProps {
     onOpen?: () => void;
