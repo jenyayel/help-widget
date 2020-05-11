@@ -1,27 +1,27 @@
 import { Configurations } from '../src/models';
 
-export const testConfig = (): Configurations => ({
+export const testConfig = (override?: {}): Configurations => Object.assign({
     debug: false,
     serviceBaseUrl: '',
     minimized: false,
     disableDarkMode: false,
     text: {},
     styles: {}
-});
+}, override);
 
 /** This closely replicates what installation script does on page (e.g. /dev/index.html) */
-export const install = (w: Window, name: string, config?: Configurations) => {
-    const d = w.document;
+export const install = (name: string, config?: Partial<Configurations>) => {
+    const w = window;
     // tslint:disable-next-line: only-arrow-functions
     w[name] = w[name] || function() { (w[name].q = w[name].q || []).push(arguments); };
+    w[name]('init', config);
+};
+
+export const currentScript = (name: string) => {
+    const d = window.document;
     const js = d.createElement('script');
     js.id = name;
-    w[name]('init', config);
-
-    Object.defineProperty(w.document, 'currentScript', {
-        writable: true,
-        value: js
-    });
+    return js;
 };
 
 export const randomNumber = (max: number = 5): number => {

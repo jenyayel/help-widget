@@ -16,16 +16,22 @@ interface LoaderObject {
 }
 
 /**
- * Will load widget instance into document of specified window.
+ * Loads widget instance.
+ *
+ * @param win Global window object which stores pre-loaded and post-loaded state of widget instance.
+ * @param defaultConfig A configurations that are merged with user.
+ * @param scriptElement The script tag that includes installation script and triggered loader.
+ * @param render A method to be called once initialization done and DOM element for hosting widget is ready.
  */
 export default (
     win: Window,
     defaultConfig: Configurations,
+    scriptElement: Element | null,
     render: (element: HTMLElement, config: Configurations) => void) => {
 
     // get a hold of script tag instance, which has an
     // attribute `id` with unique identifier of the widget instance
-    const instanceName = win.document.currentScript?.attributes.getNamedItem('id')?.value ?? DEFAULT_NAME;
+    const instanceName = scriptElement?.attributes.getNamedItem('id')?.value ?? DEFAULT_NAME;
     const loaderObject: LoaderObject = win[instanceName];
     if (!loaderObject || !loaderObject.q) {
         throw new Error(`Widget didn't find LoaderObject for instance [${instanceName}]. ` +

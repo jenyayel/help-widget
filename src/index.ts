@@ -17,4 +17,8 @@ const defaultConfig: Configurations = {
 };
 
 // main entry point - calls loader and render Preact app into supplied element
-loader(window, defaultConfig, (el, config) => render(h(App, { ...config }), el));
+loader(
+    window,
+    defaultConfig,
+    window.document.currentScript,
+    (el, config) => render(h(App, { ...config }), el));
