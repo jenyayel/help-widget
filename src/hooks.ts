@@ -4,6 +4,7 @@ export const useIsMounted = () => {
     const isMounted = useRef(false);
     useEffect(() => {
         isMounted.current = true;
+        return () => { isMounted.current = false; };
     });
     return isMounted;
 };
@@ -12,10 +13,12 @@ export const useIsMounted = () => {
 export const useTimeout = (callback: () => void, delay: number) => {
     const savedCallback = useRef(callback);
     const cancel = useRef<NodeJS.Timeout | undefined>(undefined);
+    const undo = () => cancel.current && clearTimeout(cancel.current);
 
     useEffect(() => {
         cancel.current = setTimeout(savedCallback.current, delay);
+        return undo;
     }, [delay]);
 
-    return () => cancel.current && clearTimeout(cancel.current);
+    return undo;
 };
