@@ -41,3 +41,8 @@ export interface WidgetApi {
     getFaq: () => Promise<FaqModel[]>;
     sendForm: (model: FormModel) => Promise<void>;
 }
+
+export interface Globals {
+    widgetOpen: boolean;
+    setWidgetOpen: (open: boolean) => void;
+}

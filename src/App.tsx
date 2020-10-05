@@ -5,7 +5,7 @@ import { AppContext } from './AppContext';
 
 type Props = Configurations;
 export const App = ({ element, ...appSettings }: Props) => (
-    <AppContext config={appSettings}>
+    <AppContext config={appSettings} element={element}>
         <Main />
     </AppContext>
 );

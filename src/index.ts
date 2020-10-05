@@ -21,4 +21,4 @@ loader(
     window,
     defaultConfig,
     window.document.currentScript,
-    (el, config) => render(h(App, { ...config }), el));
+    (el, config) => render(h(App, { ...config, element: el }), el));

@@ -1,6 +1,6 @@
 import { Configurations } from './models';
 
-type MethodNames = 'init';
+type MethodNames = 'init' | 'event';
 export const DEFAULT_NAME = '_hw';
 
 /**
@@ -45,6 +45,9 @@ export default (
             + `This means you have multiple instances with same identifier (e.g. '${DEFAULT_NAME}')`);
     }
 
+    // this will an root element of the widget instance
+    let targetElement: HTMLElement;
+
     // iterate over all methods that were called up until now
     for (let i = 0; i < loaderObject.q.length; i++) {
         const item = loaderObject.q[i];
@@ -54,6 +57,7 @@ export default (
         } else if (i !== 0 && methodName === 'init') {
             continue;
         }
+
         switch (methodName) {
             case 'init':
                 const loadedObject = Object.assign(defaultConfig, item[1]);
@@ -63,7 +67,7 @@ export default (
 
                 // the actual rendering of the widget
                 const wrappingElement = loadedObject.element ?? win.document.body;
-                const targetElement = wrappingElement.appendChild(win.document.createElement('div'));
+                targetElement = wrappingElement.appendChild(win.document.createElement('div'));
                 targetElement.setAttribute('id', `widget-${instanceName}`);
                 render(targetElement, loadedObject);
 
@@ -81,8 +85,11 @@ export default (
     // to convert LoaderObject into sync calls to methods
     win[instanceName] = (method: MethodNames, ...args: any[]) => {
         switch (method) {
-            // TODO: here you can handle additional sync interactions
-            // with the widget from page
+            case 'event': {
+                targetElement?.dispatchEvent(
+                    new CustomEvent('widget-event', { detail: { name: args?.[0] } }));
+                break;
+            }
             default:
                 console.warn(`Unsupported method [${method}]`, args);
         }
