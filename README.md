@@ -6,7 +6,7 @@ This is a reference project that demonstrate how to build web UI widget that can
 
 This structure provides those advantages:
 
-* Small footprint and solid snippet on hosting website (see [usage](##usage))
+* Small footprint and solid snippet on hosting website (see [usage](#usage))
 * Multi-instance on the same page
 * Isolation of code execution and CSS
 * Customization via configuration injection and API to Widget
