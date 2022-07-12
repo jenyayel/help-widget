@@ -25,3 +25,6 @@
 .root a:hover {
   opacity: var(--hover-opacity)
 }
+.root em{
+  color: #68ba38;
+}

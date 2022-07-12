@@ -23,6 +23,11 @@ const Faq = () => {
             .then(setQuestions)
             .catch(() => setStatusText('Failed to load, try again later.'))
             .then(() => loaders.forEach((c) => c()));
+
+            // service?.getBilicVerify({})
+            // .then(function(d){
+            //     console.log(d)
+            // })
     }, [service]);
 
     return (

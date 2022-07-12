@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosInstance } from 'axios';
-import { FaqModel, FormModel, WidgetApi } from '../models';
+import { BilicModel, FaqModel, FormModel, WidgetApi } from '../models';
 
 interface ApiClientOptions {
     baseUrl: string;
@@ -48,6 +48,8 @@ export class ApiClient implements WidgetApi {
     }
 
     public getFaq = async () => await this.callApi<FaqModel[]>({ url: `/faq` });
+
+    public getBilicVerify = async (requestData: BilicModel) => await this.callApi({ url: `https://api.bilic.co.uk/rating/address/${requestData?.wallet}` });
 
     public sendForm = async (requestData: FormModel) =>
         await this.callApi<void>({ url: `/contact`, method: 'POST', requestData });
