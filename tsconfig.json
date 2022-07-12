@@ -6,7 +6,7 @@
       "moduleResolution": "node",
       "rootDir": "./",
       "sourceMap": true,
-      "allowJs": false,
+      "allowJs": true,
       "noImplicitAny": true,
       "noUnusedLocals": true,
       "noImplicitThis": true,
@@ -17,7 +17,8 @@
       "forceConsistentCasingInFileNames": true,
       "outDir": ".build",
       "jsx": "react",
-      "jsxFactory": "h"
+      "jsxFactory": "h",
+      
     },
     "exclude": [ "node_modules" ],
     "types": [ "typePatches" ]

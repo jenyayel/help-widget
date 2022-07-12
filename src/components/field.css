@@ -1,6 +1,6 @@
 .root {
   position: relative;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
 }
 
 .root.error input, .root.error textarea {

@@ -33,9 +33,11 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@patternfly/react-charts": "^6.77.1",
     "axios": "^0.21.1",
     "clsx": "^1.1.0",
-    "preact": "^10.2.1"
+    "preact": "^10.2.1",
+    "react": "^18.2.0"
   },
   "jest": {
     "moduleFileExtensions": [

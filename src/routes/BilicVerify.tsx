@@ -1,17 +1,14 @@
 import { h, Fragment } from 'preact';
 import { useContext, useState, useEffect, useMemo } from 'preact/hooks';
 import { ServiceContext } from '../AppContext';
-import style from './faq.css';
+import style from './BilicVerify.css';
 import { FaqModel } from '../models';
 import clsx from 'clsx';
 import { RouteLink } from '../layout/Router';
 import { useTimeout } from '../hooks';
 import { useIsMounted } from '../hooks';
-
-
-
+import DonutChart from '../components/DonutChart';
 import Field from '../components/Field';
-
 
 
 const BilicVerify = () => {
@@ -75,7 +72,7 @@ const BilicVerify = () => {
                             type='text'
                             inputMode='email'
                             disabled={submitting}
-                            placeholder='me@home.com'
+                            placeholder='valid email or wallet'
                             autoFocus
                             onInput={(e) => setEmailValue(e.currentTarget.value)}
                             {...inputProps}
@@ -86,17 +83,19 @@ const BilicVerify = () => {
                         {submitting ? 'Sending...' : 'Send'}
                     </button>
                 </div>
+
             </form>
 
             {
-                !verifyData && !emailValue
+                !verifyData && !submitting
                     ? statusText
                     : <Fragment>
                         <p>
-                            Information About <RouteLink href='/'> {verifyData?.wallet}</RouteLink>.
-                            Information About <RouteLink href='/form'> form</RouteLink>.
+                            Result: {verifyData?.wallet}.
+                            {/* Information About <RouteLink href='/form'> form</RouteLink>. */}
                         </p>
-                        <ul className={style.root}>
+                        <p>{verifyData}</p>
+                        {/* <ul >
                             {
                                 verifyData?.tags?.map((q: any, i: any) => (
                                     <li key={i} className={clsx({ [style.visible]: i === visible })}>
@@ -104,7 +103,9 @@ const BilicVerify = () => {
                                         <span>{q}</span>
                                     </li>))
                             }
-                        </ul>
+                        </ul> */}
+                        {/* <DonutChart></DonutChart> */}
+
                     </Fragment>
             }
         </div>
