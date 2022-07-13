@@ -75,7 +75,7 @@ const BilicVerify = () => {
                             type='text'
                             inputMode='email'
                             disabled={submitting}
-                            placeholder='valid eth wallet'
+                            placeholder='Get ETH Wallet Risk Score'
                             autoFocus
                             onInput={(e) => setEmailValue(e.currentTarget.value)}
                             {...inputProps}
@@ -90,13 +90,12 @@ const BilicVerify = () => {
             </form>
 
             {
-                !verifyData && !submitting
+                !verifyData
                     ? statusText
-                    : <Fragment>
+                    : (<Fragment>
 
                         <DonutChart data={verifyData}></DonutChart>
 
-                        
                         <ul >
                             {/* {
                                 verifyData.data.balances.tokens.map((q: any, i: any) => (
@@ -106,19 +105,25 @@ const BilicVerify = () => {
                                     </li>))
                             } */}
 
-                            <li key={2} className={clsx({ [style.visible]: 2 === visible })}>
+                            {/* <li key={2} className={clsx({ [style.visible]: 2 === visible })}>
                                 <a href='javascript:;' onClick={() => setVisible(2)}>{"q.tokenInfo.name"}</a>
                                 <span>Testing</span>
-                            </li>
+                            </li> */}
 
-                            <li key={2} className={clsx({ [style.visible]: 2 === visible })}>
+                            {/* <li key={2} className={clsx({ [style.visible]: 2 === visible })}>
                                 <a href='javascript:;' onClick={() => setVisible(2)}>{"q.tokenInfo.name"}</a>
                                 <span>Testing</span>
-                            </li>
-
+                            </li> */}
                         </ul>
-                    </Fragment>
+                    </Fragment>)
             }
+            <Fragment>
+                    {/* Leave your message and we'll get back to you shortly.
+                    You can also read our <RouteLink href='/faq'>FAQ</RouteLink>. */}
+
+                    <p><RouteLink href='/form'>Report a Wallet</RouteLink> | <RouteLink href='/faq'>FAQ</RouteLink></p>
+
+            </Fragment>
         </div>
     );
 };

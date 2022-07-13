@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { ChartDonut, ChartThemeColor } from '@patternfly/react-charts';
 import { h, Fragment } from 'preact';
 
+
 const DonutChart = (props) => {
 
     const [pieData, setPieData] = useState([]);
@@ -37,6 +38,8 @@ const DonutChart = (props) => {
                 themeColor={ChartThemeColor.multiOrdered}
                 width={275}
             />
+
+
         </div>
     )
 }

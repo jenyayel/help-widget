@@ -36,6 +36,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@fluentui/react": "^8.80.0",
     "@mui/material": "^5.9.0",
     "@patternfly/react-charts": "^6.77.1",
     "axios": "^0.21.1",
