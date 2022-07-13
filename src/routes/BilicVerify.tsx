@@ -13,7 +13,8 @@ import Field from '../components/Field';
 
 const BilicVerify = () => {
     const service = useContext(ServiceContext);
-    const [verifyData, setverifyData] = useState<any | undefined>(undefined);
+    const [verifyData, setverifyData] = useState<any | undefined>(undefined)
+    // const [verifyData, setverifyData] = useState<any | undefined>(undefined);
     const [statusText, setStatusText] = useState('');
     const [visible, setVisible] = useState(0);
 
@@ -23,8 +24,10 @@ const BilicVerify = () => {
 
     const [emailValue, setEmailValue] = useState('');
     const emailError = useMemo(
-        () => mounted.current && (!emailValue || !(/^\S+@\S+$/.test(emailValue)))
-            ? 'Email is required and must be valid' : '',
+        // () => mounted.current && (!emailValue || !(/^\S+@\S+$/.test(emailValue)))
+        () => mounted.current && (!emailValue || !(/^0x[a-fA-F0-9]{40}$/.test(emailValue)))
+            ? 'ETH wallet is required and must be valid' : '',
+        // ? 'Email or wallet is required and must be valid' : '',
         [emailValue, submitting, mounted]);
 
     const formValid = useMemo(
@@ -47,12 +50,12 @@ const BilicVerify = () => {
             useTimeout(() => !verifyData && setStatusText('Still loading...'), 5000),
             useTimeout(() => !verifyData && setStatusText('Backend still didn\'t return results...'), 10000)];
 
-
         service?.getBilicVerify({ wallet: emailValue })
             .then(setverifyData)
             .catch(() => setStatusText('Failed to load, try again later.'))
             .then(() => loaders.forEach((c) => c()))
             .then(() => setSubmitting(false));
+
     }, [formValid, submitting, emailValue, service]);
 
     return (
@@ -72,7 +75,7 @@ const BilicVerify = () => {
                             type='text'
                             inputMode='email'
                             disabled={submitting}
-                            placeholder='valid email or wallet'
+                            placeholder='valid eth wallet'
                             autoFocus
                             onInput={(e) => setEmailValue(e.currentTarget.value)}
                             {...inputProps}
@@ -80,7 +83,7 @@ const BilicVerify = () => {
 
                 <div className={style.actions}>
                     <button type='submit' disabled={submitting || !formValid}>
-                        {submitting ? 'Sending...' : 'Send'}
+                        {submitting ? 'Sending...' : 'Verify'}
                     </button>
                 </div>
 
@@ -90,22 +93,30 @@ const BilicVerify = () => {
                 !verifyData && !submitting
                     ? statusText
                     : <Fragment>
-                        <p>
-                            Result: {verifyData?.wallet}.
-                            {/* Information About <RouteLink href='/form'> form</RouteLink>. */}
-                        </p>
-                        <p>{verifyData}</p>
-                        {/* <ul >
-                            {
-                                verifyData?.tags?.map((q: any, i: any) => (
+
+                        <DonutChart data={verifyData}></DonutChart>
+
+                        
+                        <ul >
+                            {/* {
+                                verifyData.data.balances.tokens.map((q: any, i: any) => (
                                     <li key={i} className={clsx({ [style.visible]: i === visible })}>
-                                        <a href='javascript:;' onClick={() => setVisible(i)}>{q}</a>
+                                        <a href='javascript:;' onClick={() => setVisible(i)}>{q.tokenInfo.name}</a>
                                         <span>{q}</span>
                                     </li>))
-                            }
-                        </ul> */}
-                        {/* <DonutChart></DonutChart> */}
+                            } */}
 
+                            <li key={2} className={clsx({ [style.visible]: 2 === visible })}>
+                                <a href='javascript:;' onClick={() => setVisible(2)}>{"q.tokenInfo.name"}</a>
+                                <span>Testing</span>
+                            </li>
+
+                            <li key={2} className={clsx({ [style.visible]: 2 === visible })}>
+                                <a href='javascript:;' onClick={() => setVisible(2)}>{"q.tokenInfo.name"}</a>
+                                <span>Testing</span>
+                            </li>
+
+                        </ul>
                     </Fragment>
             }
         </div>

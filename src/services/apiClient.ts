@@ -49,7 +49,8 @@ export class ApiClient implements WidgetApi {
 
     public getFaq = async () => await this.callApi<FaqModel[]>({ url: `/faq` });
 
-    public getBilicVerify = async (requestData: BilicModel) => await this.callApi({ url: `https://api.bilic.co.uk/rating/address/${requestData?.wallet}` });
+    // public getBilicVerify = async (requestData: BilicModel) => await this.callApi({ url: `https://api.bilic.co.uk/rating/address/${requestData?.wallet}` });
+    public getBilicVerify = async (requestData: BilicModel) => await this.callApi({ url: `http://127.0.0.1:5000/rating/address/${requestData?.wallet}` });
 
     public sendForm = async (requestData: FormModel) =>
         await this.callApi<void>({ url: `/contact`, method: 'POST', requestData });
