@@ -3,34 +3,80 @@
   margin-bottom: 1rem;
 }
 
-.root.error input, .root.error textarea {
+.root.error input,
+.root.error textarea {
   border: 1px solid var(--color-error);
 }
 
-.root.error>span {
+.root.error > span {
   color: var(--color-error);
   font-size: 13px;
 }
 
-button{
+button {
   border-radius: var(--border-radius);
   display: inline-block;
   font-size: medium;
   font-weight: bold;
-  margin: 0.5rem 0 0.5rem 0 !important;
-  padding: 0.4rem 1rem !important;
-  background-color: #67ba38 !important;
-  border: 2px solid #67ba38 !important;
+  padding: 0.4rem 1.2rem !important;
   color: white;
   float: right;
 }
 
 .actions {
   display: flex;
-  justify-content: flex-end;
+  width: 100%;
 }
 
 .error {
   color: var(--color-error);
   margin: 12px 0;
+}
+
+.bilicWidgetLinks {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px 0;
+  position: relative;
+  padding: 40px 24px 52px;
+}
+
+.bilicWidgetLinks img {
+  margin-right: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bilicWidgetLink:last-child img {
+    content: url("../assets/images/faq-dark.svg");
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .bilicWidgetLink:first-child img {
+    content: url("../assets/images/speaker-dark.svg");
+  }
+}
+
+.bilicWidgetLinks a {
+  display: flex;
+  font-weight: 400;
+  color: var(--color-text);
+  width: 100%;
+  min-height: 80px;
+  padding: 4px 12px;
+  border: 1px solid #0408020f;
+  align-items: center;
+  border-radius: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bilicWidgetLinks a {
+    color: hsl(98deg 98% 95%);
+    border: 1px solid #ffffff2e;
+  }
+}
+
+.bilicWidgetLinks a:hover {
+  text-decoration: none;
 }

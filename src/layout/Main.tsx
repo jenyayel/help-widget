@@ -28,24 +28,35 @@ const Main = () => {
     };
 
     return (
-        <div className={clsx(style.root, { [style.noDark]: config.disableDarkMode })}>
+        <div
+            className={clsx(style.root, {
+                [style.noDark]: config.disableDarkMode,
+            })}
+        >
             <div>
                 <TitleBar routeTitle={title} />
-                <div className={clsx(
-                    style.container,
-                    { [style.minimized]: !widgetOpen },
-                    config.styles.classNameContainer)}>
+                <div
+                    className={clsx(
+                        style.container,
+                        { [style.minimized]: !widgetOpen },
+                        config.styles.classNameContainer
+                    )}
+                >
                     <Router
                         onChange={(r) => setTitle(getTitle(r))}
                         routes={{
                             '/form': <RouteComponent component={ContactForm} />,
-                            '/thankyou': <RouteComponent component={ThankYou} />,
+                            '/thankyou': (
+                                <RouteComponent component={ThankYou} />
+                            ),
                             '/faq': <RouteComponent component={Faq} />,
-                            '/': <RouteComponent component={BilicVerify} />
-                        }} />
+                            '/': <RouteComponent component={BilicVerify} />,
+                        }}
+                    />
                 </div>
             </div>
-        </div >);
+        </div>
+    );
 };
 
 export default Main;
