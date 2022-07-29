@@ -1,11 +1,40 @@
 .root {
-    list-style: none;
-    padding: 0;
-    margin: 0
+  list-style: none;
+  margin: 0;
+  padding: 0 1.2rem;
+  display: flex;
+  flex-direction: column;
+  background: #fcfffa;
+  /* margin: 1rem;
+  border-radius: 12px; */
+}
+.root li span {
+  display: none;
+}
+.root li.visible span {
+  display: block;
+}
+
+.faqlink {
+  margin-bottom: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  font-weight: 400 !important;
+  line-height: 26px;
+}
+
+.faqlink:hover {
+  text-decoration: none !important;
+}
+
+.faqAnswer {
+  color: #040802;
+  font-size: 1rem;
+  line-height: 26px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .faqAnswer {
+    color: #040802;
   }
-  .root li span {
-    display: none;
-  }
-  .root li.visible span {
-    display: block;
-  }
+}

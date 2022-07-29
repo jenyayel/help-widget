@@ -47,12 +47,13 @@
 
 .reset ol li,
 .reset ul li {
-  padding: 0.2rem 0;
+  padding: 1.2rem 0;
 }
 
 .reset p {
-  margin: 0.75rem 0;
+  margin: 0.8rem 1.2rem 1.6rem;
   padding: 0;
+  line-height: 24px;
 }
 
 .reset small {
@@ -155,8 +156,8 @@
 }
 
 .reset label {
-  font-weight: bold;
-  margin-bottom: 0.2rem;
+  font-weight: 400;
+  margin-bottom: 0.8rem;
 }
 
 .reset ::-webkit-input-placeholder {

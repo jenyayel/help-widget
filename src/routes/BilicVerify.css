@@ -37,9 +37,9 @@ button {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 10px 0;
+  gap: 28px 0;
   position: relative;
-  padding: 40px 24px 52px;
+  padding: 40px 24px 44px;
 }
 
 .bilicWidgetLinks img {
