@@ -10,7 +10,8 @@ module.exports = (env) => {
     entry: './src/index.ts',
     output: {
       filename: 'widget.js',
-      path: path.resolve(bundleOutputDir),
+      // path: path.resolve(bundleOutputDir),
+      path: path.resolve(__dirname, 'dist'),
     },
     devServer: {
       contentBase: bundleOutputDir
@@ -90,7 +91,18 @@ module.exports = (env) => {
         }]
     },
     resolve: {
-      extensions: ['*', '.js', '.ts', '.tsx']
-    }
+      extensions: ['*', '.js', '.ts', '.tsx'],
+      alias: { 
+        "react": "preact/compat",
+        "react-dom/test-utils": "preact/test-utils",
+        "react-dom": "preact/compat",     // Must be below test-utils
+        "react/jsx-runtime": "preact/jsx-runtime"
+      },
+    },
+    performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+}
   }];
 };

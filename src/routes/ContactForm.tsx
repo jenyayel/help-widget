@@ -40,7 +40,7 @@ const ContactForm = () => {
             setSubmitting(false);
             return;
         }
-
+        
         console.log('Sending form', { emailValue, messageValue });
         service?.sendForm({ email: emailValue, message: messageValue })
             .then(() => {

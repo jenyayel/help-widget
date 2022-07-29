@@ -37,8 +37,13 @@ export interface FormModel {
     message: string;
 }
 
+export interface BilicModel{
+        wallet: string
+}
+
 export interface WidgetApi {
     getFaq: () => Promise<FaqModel[]>;
+    getBilicVerify: (model: BilicModel) => Promise<[]>;
     sendForm: (model: FormModel) => Promise<void>;
 }
 
