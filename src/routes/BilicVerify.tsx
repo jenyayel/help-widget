@@ -7,11 +7,14 @@ import clsx from 'clsx';
 import { RouteLink } from '../layout/Router';
 import { useTimeout } from '../hooks';
 import { useIsMounted } from '../hooks';
-import DonutChart from '../components/DonutChart';
+import DonutChart from '../components/charts/DonutChart';
 import Field from '../components/Field';
 import './BilicVerifyStyles.css';
 import SpeakerImage from '../assets/images/speaker.svg';
 import FaqImage from '../assets/images/faq.svg';
+import GaugeChart from '../components/charts/Gauge';
+import Score from '../components/charts/Score';
+import { Link } from '@fluentui/react';
 
 const BilicVerify = () => {
     const service = useContext(ServiceContext);
@@ -29,7 +32,7 @@ const BilicVerify = () => {
         // () => mounted.current && (!emailValue || !(/^\S+@\S+$/.test(emailValue)))
         () =>
             mounted.current &&
-            (!emailValue || !/^0x[a-fA-F0-9]{40}$/.test(emailValue))
+                (!emailValue || !/^0x[a-fA-F0-9]{40}$/.test(emailValue))
                 ? 'ETH wallet is required and must be valid'
                 : '',
         // ? 'Email or wallet is required and must be valid' : '',
@@ -120,37 +123,34 @@ const BilicVerify = () => {
                 statusText
             ) : (
                 <Fragment>
-                    <DonutChart data={verifyData}></DonutChart>
 
-                    <ul>
-                        {/* {
-                                verifyData.data.balances.tokens.map((q: any, i: any) => (
-                                    <li key={i} className={clsx({ [style.visible]: i === visible })}>
-                                        <a href='javascript:;' onClick={() => setVisible(i)}>{q.tokenInfo.name}</a>
-                                        <span>{q}</span>
-                                    </li>))
-                            } */}
+                    <Score data={verifyData}></Score>
 
-                        {/* <li key={2} className={clsx({ [style.visible]: 2 === visible })}>
-                                <a href='javascript:;' onClick={() => setVisible(2)}>{"q.tokenInfo.name"}</a>
-                                <span>Testing</span>
-                            </li> */}
+                    {/* <GaugeChart data={verifyData}></GaugeChart> */}
 
-                        {/* <li key={2} className={clsx({ [style.visible]: 2 === visible })}>
-                                <a href='javascript:;' onClick={() => setVisible(2)}>{"q.tokenInfo.name"}</a>
-                                <span>Testing</span>
-                            </li> */}
-                    </ul>
+                    {/* <DonutChart data={verifyData}></DonutChart> */}
+
+                    
+
+
                 </Fragment>
             )}
+
             <Fragment>
                 {/* Leave your message and we'll get back to you shortly.
                     You can also read our <RouteLink href='/faq'>FAQ</RouteLink>. */}
 
                 <section className={style.bilicWidgetLinks}>
-                    <RouteLink className={style.bilicWidgetLink} href="/form">
+                    <RouteLink className={style.bilicWidgetLink} href="https://airtable.com/shrHjqFa74aFvxJ7A">
                         <img src={SpeakerImage} alt="" /> Report a Wallet
-                    </RouteLink>
+                    </RouteLink>                    
+                    
+                    {/* <RouteLink className={style.bilicWidgetLink} href="/form">
+                        <img src={SpeakerImage} alt="" /> Report a Wallet
+                    </RouteLink> */}
+
+                    <Link></Link>
+
                     <RouteLink className={style.bilicWidgetLink} href="/faq">
                         <img src={FaqImage} alt="" />
                         FAQ
