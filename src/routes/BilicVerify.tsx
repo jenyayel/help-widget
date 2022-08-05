@@ -78,6 +78,8 @@ const BilicVerify = () => {
 
     return (
         <div>
+
+            
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
@@ -130,8 +132,6 @@ const BilicVerify = () => {
 
                     {/* <DonutChart data={verifyData}></DonutChart> */}
 
-                    
-
 
                 </Fragment>
             )}
@@ -141,20 +141,33 @@ const BilicVerify = () => {
                     You can also read our <RouteLink href='/faq'>FAQ</RouteLink>. */}
 
                 <section className={style.bilicWidgetLinks}>
-                    <RouteLink className={style.bilicWidgetLink} href="https://airtable.com/shrHjqFa74aFvxJ7A">
+
+                <Link className={style.bilicWidgetLink} target="_blank" href="https://airtable.com/shrHjqFa74aFvxJ7A">
+                    {/* <img src={SpeakerImage} alt="" /> Report a Wallet */}
+                    <img src={SpeakerImage} alt="" /> Report a Case
+                </Link>
+
+                <Link className={style.bilicWidgetLink} target="_blank" href="https://docs.google.com/document/d/11ghY9D2j0vA1pGIVFKUigShmSIPdy52y47pZIb5dpes/preview">
+                    {/* <img src={SpeakerImage} alt="" /> Report a Wallet */}
+                    <img src={SpeakerImage} alt="" /> 
+                    Privacy Policy
+                </Link>
+
+                    {/* <RouteLink className={style.bilicWidgetLink} href="https://airtable.com/shrHjqFa74aFvxJ7A">
                         <img src={SpeakerImage} alt="" /> Report a Wallet
-                    </RouteLink>                    
-                    
-                    {/* <RouteLink className={style.bilicWidgetLink} href="/form">
+                    </RouteLink> */}
+{/* 
+                    <RouteLink className={style.bilicWidgetLink} href="/form">
                         <img src={SpeakerImage} alt="" /> Report a Wallet
                     </RouteLink> */}
 
-                    <Link></Link>
+                    {/* <Link></Link> */}
 
-                    <RouteLink className={style.bilicWidgetLink} href="/faq">
+                    {/* <RouteLink className={style.bilicWidgetLink} href="/faq">
                         <img src={FaqImage} alt="" />
                         FAQ
-                    </RouteLink>
+                    </RouteLink> */}
+
                 </section>
             </Fragment>
         </div>

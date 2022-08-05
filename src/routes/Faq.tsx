@@ -32,11 +32,7 @@ const Faq = () => {
             .then(setQuestions)
             .catch(() => setStatusText('Failed to load, try again later.'))
             .then(() => loaders.forEach((c) => c()));
-
-        // service?.getBilicVerify({})
-        // .then(function(d){
-        //     console.log(d)
-        // })
+            
     }, [service]);
 
     return (
@@ -46,8 +42,7 @@ const Faq = () => {
             ) : (
                 <Fragment>
                     <p>
-                        Here is a list of frequently asked questions. You can
-                        also contact us <RouteLink href="/"> here</RouteLink>.
+                        Go Back <RouteLink href="/"> home</RouteLink>.
                     </p>
                     <ul className={style.root}>
                         {questions.map((q, i) => (
