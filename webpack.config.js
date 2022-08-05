@@ -12,6 +12,7 @@ module.exports = (env) => {
       filename: 'widget.js',
       // path: path.resolve(bundleOutputDir),
       path: path.resolve(__dirname, 'dist'),
+      // path: path.resolve(__dirname, 'src'),
     },
     devServer: {
       contentBase: bundleOutputDir

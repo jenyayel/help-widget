@@ -84,3 +84,10 @@ button {
 .pf-c-chart{
 
 }
+
+.bilic-widget__links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px 0;
+}

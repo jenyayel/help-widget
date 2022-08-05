@@ -9,7 +9,7 @@ import { useTimeout } from '../hooks';
 import { useIsMounted } from '../hooks';
 import DonutChart from '../components/charts/DonutChart';
 import Field from '../components/Field';
-import './BilicVerifyStyles.css';
+// import './BilicVerifyStyles.css';
 import SpeakerImage from '../assets/images/speaker.svg';
 import FaqImage from '../assets/images/faq.svg';
 import GaugeChart from '../components/charts/Gauge';
