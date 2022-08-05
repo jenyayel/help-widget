@@ -12,7 +12,7 @@ const TitleBar = (props: OwnProps) => {
 
     return (
         <div className={style.root} onClick={() => setWidgetOpen(!widgetOpen)}>
-            <h4>{widgetOpen
+            <h4 style={{color:'white'}} className='bilic'>{widgetOpen
                 ? props.routeTitle
                 : (config.text.minimizedTitle ?? 'Bilic')} <em className='verify'> - report & verify</em> </h4> 
             <a
