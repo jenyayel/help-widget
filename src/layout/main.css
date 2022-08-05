@@ -10,6 +10,7 @@
   --hover-brightness: 1.2;
   --hover-opacity: 0.5;
   --line-height: 150%;
+  z-index: 99999;
 }
 
 @media (prefers-color-scheme: dark) {
